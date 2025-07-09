@@ -1,0 +1,27 @@
+#grandparent{ 
+    border:2 px solid red;
+    height:300px;
+    width:300px;
+    align-items:center;
+    display:flex;
+    justify-content:center;
+    background-color:red;
+}
+#parent{
+border:2px solid green;
+height:250px;
+width:250px;
+background-color:green;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+#child{
+border:2px solid yellow;
+height:200px;
+width:200px;
+display:flex;
+justify-content:center;
+align-items:center;
+background-color:yellow;
+}
