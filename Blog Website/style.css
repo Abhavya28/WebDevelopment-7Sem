@@ -1,20 +1,32 @@
-body{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+:root {
+  --bg-color: #f5f2eb;
+  --text-color: #3e2c23;
+  --accent-color: #a47148;
+  --secondary-accent: #bea37e;
+  --footer-bg: #3e2c23;
+  --footer-text: #eee7d8;
 }
 
-.nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: black;
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
-.nav .logo{
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--footer-bg);
+}
+
+.nav .logo {
+  color: var(--footer-text);
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .nav .links ul {
@@ -32,49 +44,166 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: var(--footer-text);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: white;
-  color : black;
+  background-color: var(--footer-text);
+  color: var(--footer-bg);
 }
 
-.home{
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f4f4f4;
-    display: flex;
+.home {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: var(--secondary-accent);
+  display: flex;
 }
-.home-left{
-    width: 60%;
-    padding: 20px;
-    text-align: left;
+
+.home-left {
+  width: 60%;
+  padding: 20px;
+  text-align: left;
 }
-.home-left h1{
-    font-size: 100px;
-    margin-bottom: 20px;
+
+.home-left h1 {
+  font-size: 100px;
+  margin-bottom: 20px;
 }
-.home-left p{
-    font-size: 30px;
-    margin-bottom: 20px;
+
+.home-left p {
+  font-size: 30px;
+  margin-bottom: 20px;
 }
-.home-left button{
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
+
+.home-left button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  border: none;
+  cursor: pointer;
 }
-.home-right{
-    width: 40%;
-    padding: 20px;
+
+.home-right {
+  width: 40%;
+  padding: 20px;
 }
-.home-right img{
-    width: 100%;
-    height: auto;
+
+.home-right img {
+  width: 100%;
+  height: auto;
+}
+
+.cafes {
+  padding: 30px 20px;
+  max-width: 1100px;
+  margin: auto;
+  background-color: var(--bg-color);
+  font-family: 'Georgia', serif;
+}
+
+/* 🔍 Filters Layout */
+.cafe-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* 🔍 Search bar */
+.book-filters form {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cafe-filters input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  width: 180px;
+  background-color: #fff;
+  color: var(--text-color);
+}
+
+.cafe-filters button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cafe-filters select,
+.cafe-filters input[type="date"] {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  min-width: 160px;
+  color: var(--text-color);
+}
+
+/* 📚 Book Cards Layout */
+.cafe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 40px 20px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--footer-text);
+}
+
+.footer-content p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socials a {
+  font-size: 24px;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+  border-top: 1px solid #444;
+  padding-top: 15px;
 }
