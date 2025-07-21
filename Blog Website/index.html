@@ -4,67 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
-    <title>Document</title>
+    <title>Cafe Canvas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="nav">
-        <div class="logo">Blog</div>
+        <div class="logo">Cafe Canvas</div>
         <div class="links">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Admin</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><button id="adminBtn">Add</button></li>
             </ul>
         </div>
     </div>
-    <!-- Home -->
-    <div class="home">
-        <div class="home-left">
-            <h1>Welcome to <span style="color: green;"> Blog</span> Site!</h1>
-            <p>Explore the latest articles and insights on various topics.</p>
+    <!--Home-->
+    <div class="home" id="home">
+        <h1>Cafe Canvas </h1>
+        <p>Discover hidden gems and share your own café and restaurant experiences with the world.</p>
         <button>Get Started</button>
-        </div>
-        <div class="home-right">
-            <img src="assets/home.png" alt="">
-        </div>
     </div>
-    <hr>
 
     <!-- Blogs -->
     <!-- Cafes -->
-<div class="cafes">
-    <!-- 🔍 Search & Filter Bar -->
-    <div class="cafe-filters">
-        <form action="/">
-            <input type="text" placeholder="Enter Destination">
-            <button><i class="ri-search-line"></i></button>
-        </form>
+<section class="blog-section" id="blogs">
+  <div class="filters">
+    <form>
+        <input type="text" id="searchBar" placeholder="Search by title..." />
+        <button type="submit"><i class="ri-search-2-line"></i></button>
+    </form>
+    
 
-        <select id="genreFilter">
-            <option value="">All Genres</option>
-            <option value="fiction">Fiction</option>
-            <option value="non-fiction">Non-fiction</option>
-            <option value="romance">Romance</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="mystery">Mystery</option>
-        </select>
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+    </select>
 
-        <input type="date" id="dateFilter" />
+    <select id="locationFilter">
+      <option value="">All Locations</option>
+    </select>
 
-        <select id="sortBy">
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-        </select>
+    <input type="date" id="dateFilter" />
+
+    <select id="sortFilter">
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
+
+  <div class="blog-cards" id="blogCards">
+    
+  </div>
+</section>
+
+
+    <div id="adminPopup" class="popup">
+        <div class="popup-content">
+            <span id="closePopup" class="close">&times;</span>
+            <h2>Add New Blog</h2>
+            <form id="blogForm">
+            <input type="text" id="blogTitle" placeholder="Title" required />
+            <input type="text" id="blogDescription" placeholder="Description" required />
+            <input type="url" id="blogImage" placeholder="Image URL" required />
+            <input type="text" id="blogCategory" placeholder="Category" required />
+            <input type="text" id="blogLocation" placeholder="Location" required />
+            <input type="date" id="blogDate" required />
+            <button type="submit">Add Blog</button>
+            </form>
+        </div>
     </div>
-
-    <!-- Cafe List Display -->
-    <div id="cafeList" class="cafe-list">
-        <!-- Cafe cards will be inserted here via JS or hardcoded -->
-    </div>
-</div>
-
-    <hr>
 
     <!-- Footer -->
     <div class="footer">
