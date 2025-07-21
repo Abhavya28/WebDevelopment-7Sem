@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">Blog</div>
+        <div class="links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Home -->
+    <div class="home">
+        <div class="home-left">
+            <h1>Welcome to <span style="color: green;"> Blog</span> Site!</h1>
+            <p>Explore the latest articles and insights on various topics.</p>
+        <button>Get Started</button>
+        </div>
+        <div class="home-right">
+            <img src="assets/home.png" alt="">
+        </div>
+    </div>
+    <hr>
+
+    <!-- Blogs -->
+     <div class="blog-section">
+        <div class="blog-filters">
+            <input type="text" placeholder="Search blogs..." class="search-input" />
+
+            <select class="filter-category">
+            <option value="">All Categories</option>
+            <option value="tech">Tech</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="travel">Travel</option>
+            <!-- Add more categories as needed -->
+            </select>
+
+            <input type="date" class="filter-date" />
+
+            <button class="search-btn">Search</button>
+        </div>
+
+        <!-- Blog list placeholder -->
+        <div class="blog-list">
+            <!-- Blog cards will go here -->
+        </div>
+    </div>
+</body>
+</html>
