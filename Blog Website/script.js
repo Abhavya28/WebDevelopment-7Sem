@@ -19,7 +19,7 @@ let blogs = JSON.parse(localStorage.getItem('blogs')) || [
   }
 ];
 
-// DOM Elements
+
 const blogContainer = document.getElementById("blogCards");
 const categoryFilter = document.getElementById("categoryFilter");
 const locationFilter = document.getElementById("locationFilter");
@@ -31,12 +31,12 @@ const adminPopup = document.getElementById('adminPopup');
 const closePopup = document.getElementById('closePopup');
 const blogForm = document.getElementById('blogForm');
 
-// Save to localStorage
+
 function saveBlogsToLocalStorage() {
   localStorage.setItem('blogs', JSON.stringify(blogs));
 }
 
-// Render all blogs
+
 function renderBlogs(data) {
   blogContainer.innerHTML = "";
 
@@ -64,7 +64,7 @@ function renderBlogs(data) {
   });
 }
 
-// Populate filter dropdowns
+
 function populateFilters() {
   const categories = [...new Set(blogs.map(b => b.category))];
   const locations = [...new Set(blogs.map(b => b.location))];
@@ -81,7 +81,7 @@ function populateFilters() {
   });
 }
 
-// Apply filters
+
 function applyFilters() {
   const search = searchBar.value.toLowerCase();
   const selectedCategory = categoryFilter.value;
@@ -106,7 +106,7 @@ function applyFilters() {
   renderBlogs(filtered);
 }
 
-// Popup open/close
+
 adminBtn.addEventListener('click', () => {
   adminPopup.style.display = 'flex';
 });
@@ -121,7 +121,6 @@ window.addEventListener('click', (e) => {
   }
 });
 
-// Add new blog
 blogForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -136,20 +135,20 @@ blogForm.addEventListener('submit', (e) => {
 
   blogs.push(newBlog);
   saveBlogsToLocalStorage();
-  populateFilters(); // repopulate in case new category/location added
+  populateFilters(); 
   renderBlogs(blogs);
   blogForm.reset();
   adminPopup.style.display = 'none';
 });
 
-// Filters
+
 searchBar.addEventListener("input", applyFilters);
 categoryFilter.addEventListener("change", applyFilters);
 locationFilter.addEventListener("change", applyFilters);
 dateFilter.addEventListener("change", applyFilters);
 sortFilter.addEventListener("change", applyFilters);
 
-// Initial render
+
 window.addEventListener('DOMContentLoaded', () => {
   populateFilters();
   renderBlogs(blogs);

@@ -194,17 +194,17 @@ li a:hover {
 
 
 .popup {
-  display: none; /* hidden by default */
+  display: none; 
   position: fixed;
   margin: auto;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.4); 
   justify-content: center;
   align-items: center;
   z-index: 999;
-  backdrop-filter: blur(4px); /* blurred background */
+  backdrop-filter: blur(4px);
 }
 
 .popup-content {
