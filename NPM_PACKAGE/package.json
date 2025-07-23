@@ -1,0 +1,22 @@
+{
+  "name": "g-5-npm-package-1",
+  "version": "1.1.0",
+  "description": "this is the first npm package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhavya28/WebDevelopment-7Sem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhavya28/WebDevelopment-7Sem/issues"
+  },
+  "homepage": "https://github.com/Abhavya28/WebDevelopment-7Sem#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5"
+  }
+}

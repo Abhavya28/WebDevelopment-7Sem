@@ -1,0 +1,5 @@
+THIS IS MY FIRST PACKAGE PF G5
+
+#HOW TO USE THIS
+1. DOWNLOAD THE PACKAGE NAME : g-5-npm-package
+2. USE FUNCTION : addTwoNumbers, subNumbers
