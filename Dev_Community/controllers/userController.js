@@ -1,76 +1,85 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const generateToken = require("../utils/generateToken");
+// const generateToken = require("../utils/generateToken");
 
+const registerUser = async (req, res) => {
+  const { firstName, lastName, emailId, password } = req.body;
 
-const generateToken = (userId) =>{
-    return jwt.sign({userId}, process.env.JWT_SECRET_KEY);
+  //VALIDATION
 
-}
+  if (!firstName || !emailId || !password) {
+    return res.status(400).send({ message: "Please Add all mandatory fields" });
+  }
 
-const registerUser = async (req,res) =>{
-    const { firstName, lastName, emailId, password} = req.body;
+  //Check the user existing already in db or not
+  const userExists = await User.findOne({ emailId });
+  if (userExists) {
+    return res.status(400).json({ message: "Already Exist" });
+  }
 
-    //VALIDATION
-
-    if (!firstName || !emailId || !password){
-        return res.status(400).send({message:"Please Add all mandatory fields"});
-    }
-
-    //Check the user existing already in db or not
-    const userExists = await User.findOne({emailId});
-
-    if (userExists){
-        return res.status(400).json({message: "Already Exist"});
-    }
-
-    const hashPassword = await bcrypt.hash(password, 10);
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     //CREATE USER IN YOUR DATABASE
-
     const newUser = await User.create({
-        firstName,
-        lastName,
-        emailId,
-        password:hashPassword
+      firstName,
+      lastName,
+      emailId,
+      password: hashedPassword,
     });
 
     await newUser.save();
 
-    const tokenGen = generateToken(newUser._id)
-    console.log(tokenGen);
-    
-    return res.status(201).json("USER CREATED",tokenGen);
-    
-}
+    // const tokenGen = generateToken(newUser._id)
 
+    return res.status(201).json({
+      message: "User Registered Successfully",
+      data: {
+        firstName,
+        emailId,
+        hashedPassword,
+      },
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
 
-const loginUser = async (req,res) => {
-     const { emailId, password} = req.body;
+const loginUser = async (req, res) => {
+  const { emailId, password } = req.body;
 
-     //Validation:
+  //Validation:
+  if (!emailId || !password) {
+    return res.status(400).send("Please Fill All the Details");
+  }
 
-     if (!emailId || !password){
-        return res.status(400).send("Please Fill All the Details");
-     }
+  const userExists = await User.findOne({ emailId });
 
-     const userExists = await User.findOne({emailId});
-     
-     if(!userExists){
-        return res.status(400).send("User not found !!")
-     }
-     if(password !== userExists.password){
-        return res.status(400).send("Invalid Password");
-    }
+  if (!userExists) {
+    return res.status(400).send("User not found !!");
+  }
+
+  //PASSWORD VERIFICATION: RIGHT OR WRONG
+
+  //  if (password != userExists.password){
+  //     return res.status(401).send("Password is Wrong");
+  //  }
+
+  try {
     const isMatched = await bcrypt.compare(password, userExists.password);
-    if(!isMatched){
-        return res.status(401).send("Invalid Password");
-    }
-    return res.status(200).json({
-        message: "User Logged in Successfully",
-        userName: userExists.firstName,
-        emailId: userExists.emailId,
-     });
-}
 
-module.exports = { registerUser, loginUser }
+    if (!isMatched) {
+      return res.status(401).send("Password is Wrong");
+    }
+
+    return res.status(200).json({
+      message: "User Logged In Successfully",
+      userName: userExists.firstName,
+      emailId: userExists.emailId,
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { registerUser, loginUser };

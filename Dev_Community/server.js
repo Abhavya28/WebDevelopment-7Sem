@@ -3,9 +3,10 @@ const express = require("express");
 require("dotenv").config();
 
 //IMPORT DB CONNECTION
-const sbConnect = require("./config/database");
+const dbConnect = require("./config/database");
 
 const userRouter = require("./routes/userRoutes");
+const profileRouter = require("./routes/profileRoutes");
 
 //SET INSTANCES HERE ONLY
 const app = express();
@@ -20,15 +21,21 @@ const PORT = process.env.PORT || 4888;
 app.use(express.json());
 
 
-//WE WILLL MAKE ROUTES
+//WE WILL MAKE ROUTES
 
-app.use("/api/user", userRouter);
+app.use("/api/user",userRouter);
 
-//END POINTS : USER
+app.use("/api/profile/", profileRouter )
 
-app.get("/",(req,res)=>{
-  res.send({message:"THIS IS DASHBOARD"})
+
+
+// ERROR HANDLER
+
+app.use("/", function (req,res){
+  res.status(500).json({message: "SOMETHING HAPPENED"});
 })
+
+
 
 
 dbConnect().then(() => {
