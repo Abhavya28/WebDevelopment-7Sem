@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-
+const User = require("../models/userModel");
 
 const authMiddleware = async (req,res,next)=>{
     const { authorization } = req.headers;
@@ -9,11 +9,29 @@ const authMiddleware = async (req,res,next)=>{
     const token = authorization.split(" ")[1]
     // console.log(token);
 
-    const tokenObject = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-    const { _id} = tokenObject;
-    // console.log(_id);
-    // FIND IN DB WITH THAT ID: IF PRESENT then NEXT(), OR NAHI HAI TO RETURN 
+    if(!user){
+        res.status(401).json({
+            message: "Unauthorized User"
+        })
+    }
+
+    
+    const { _id} = user.userId;
+
+    const userFind = await User.findById(_id);
+
+    if(userFind.length==0){
+        return res.status(404).json({
+            message: "User not found"
+        });
+    }
+
+    req.user = user;
+
+
+   
 
 
 
