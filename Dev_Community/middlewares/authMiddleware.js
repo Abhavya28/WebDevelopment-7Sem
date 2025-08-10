@@ -16,7 +16,6 @@ const authMiddleware = async (req,res,next)=>{
             message: "Unauthorized User"
         })
     }
-
     
     const { _id} = user.userId;
 
