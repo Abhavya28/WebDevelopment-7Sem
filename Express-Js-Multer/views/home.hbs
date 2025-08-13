@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> THIS IS MY HOME PAGE</title>
+    </head>
+    <body>
+        {{> navbar }}
+        <p>{{firstname}} {{lastname}}</p>
+        <form action="/profile" method="post" enctype="multipart/form-data">
+            <input type="file" name="avatar" />
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+
